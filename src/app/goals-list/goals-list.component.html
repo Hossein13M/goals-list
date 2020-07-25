@@ -1,1 +1,170 @@
-<p>goals-list works!</p>
+<div class="mt-5 mx-5" dir="rtl">
+  <mat-card>
+    <header>
+      <h1 class="text-center">لیست اهداف</h1>
+      <br />
+    </header>
+    <div>
+      <div class="mat-elevation-z8">
+        <table
+          mat-table
+          [dataSource]="tableList"
+          class="table table-striped table-no-bordered table-hover"
+        >
+          <!-- Position Column -->
+          <ng-container matColumnDef="کارمند">
+            <th
+              class="font-weight-bold text-center py-2"
+              mat-header-cell
+              *matHeaderCellDef
+            >
+              کارمند
+            </th>
+            <td class="text-center py-2" mat-cell *matCellDef="let element">
+              {{ element.employee }}
+            </td>
+          </ng-container>
+
+          <!-- Name Column -->
+          <ng-container matColumnDef="شرح هدف">
+            <th
+              class="font-weight-bold text-center py-2"
+              mat-header-cell
+              *matHeaderCellDef
+            >
+              شرح هدف
+            </th>
+            <td class="text-center py-2" mat-cell *matCellDef="let element">
+              {{ element.goalDesc }}
+            </td>
+          </ng-container>
+
+          <!-- Weight Column -->
+          <ng-container matColumnDef="وزن">
+            <th
+              class="font-weight-bold text-center py-2"
+              mat-header-cell
+              *matHeaderCellDef
+            >
+              وزن
+            </th>
+            <td class="text-center py-2" mat-cell *matCellDef="let element">
+              {{ element.weight }}
+            </td>
+          </ng-container>
+
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="میزان انتظار">
+            <th
+              class="font-weight-bold text-center py-2"
+              mat-header-cell
+              *matHeaderCellDef
+            >
+              میزان انتظار
+            </th>
+            <td class="text-center py-2" mat-cell *matCellDef="let element">
+              {{ element.expectedAmount }}
+            </td>
+          </ng-container>
+
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="واحد اندازه‌گیری">
+            <th
+              class="font-weight-bold text-center py-2"
+              mat-header-cell
+              *matHeaderCellDef
+            >
+              واحد اندازه‌گیری
+            </th>
+            <td class="text-center py-2" mat-cell *matCellDef="let element">
+              {{ element.measureUnit }}
+            </td>
+          </ng-container>
+
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="مهلت">
+            <th
+              class="font-weight-bold text-center py-2"
+              mat-header-cell
+              *matHeaderCellDef
+            >
+              مهلت
+            </th>
+            <td class="text-center py-2" mat-cell *matCellDef="let element">
+              {{ element.date }}
+            </td>
+          </ng-container>
+
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="تاریخ تایید">
+            <th
+              class="font-weight-bold text-center py-2"
+              mat-header-cell
+              *matHeaderCellDef
+            >
+              تاریخ تایید
+            </th>
+            <td class="text-center py-2" mat-cell *matCellDef="let element">
+              <button
+                *ngIf="element.confirmStatus"
+                mat-stroked-button
+                class="w-25"
+                color="primary"
+              >
+                تایید شده
+                <span class="material-icons">
+                  done
+                </span>
+              </button>
+
+              <button
+                class="w-25"
+                *ngIf="!element.confirmStatus"
+                mat-stroked-button
+                color="warn"
+              >
+                تایید نشده
+                <span class="material-icons">
+                  clear
+                </span>
+              </button>
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="عملیات">
+            <th
+              class="font-weight-bold text-center py-2"
+              mat-header-cell
+              *matHeaderCellDef
+            >
+              عملیات
+            </th>
+            <td class="text-center py-2" mat-cell *matCellDef="let element">
+              <button mat-icon-button color="primary">
+                <span class="material-icons">
+                  create
+                </span>
+              </button>
+              <button mat-icon-button color="warn">
+                <span class="material-icons">
+                  delete_forever
+                </span>
+              </button>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="tableColumnHeaders"></tr>
+          <tr mat-row *matRowDef="let row; columns: tableColumnHeaders"></tr>
+        </table>
+
+        <mat-paginator
+          [pageSizeOptions]="[5, 10]"
+          showFirstLastButtons
+        ></mat-paginator>
+      </div>
+    </div>
+    <footer>
+      by
+    </footer>
+  </mat-card>
+</div>
