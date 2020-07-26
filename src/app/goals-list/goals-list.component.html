@@ -140,12 +140,20 @@
               عملیات
             </th>
             <td class="text-center py-2" mat-cell *matCellDef="let element">
-              <button mat-icon-button color="primary">
+              <button
+                mat-icon-button
+                color="primary"
+                (click)="openEditDialog(element)"
+              >
                 <span class="material-icons">
                   create
                 </span>
               </button>
-              <button mat-icon-button color="warn" (click)="openDeleteDialog(element)">
+              <button
+                mat-icon-button
+                color="warn"
+                (click)="openDeleteDialog(element)"
+              >
                 <span class="material-icons">
                   delete_forever
                 </span>
@@ -163,8 +171,6 @@
         ></mat-paginator>
       </div>
     </div>
-    <footer>
-      by
-    </footer>
+    <footer></footer>
   </mat-card>
 </div>

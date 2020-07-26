@@ -6,6 +6,7 @@ import { MatDialog } from "@angular/material/dialog";
 import { MatPaginator } from "@angular/material/paginator";
 import { FormGroup, Validators, FormBuilder } from "@angular/forms";
 import { DeleteComponent } from "../dialogs/delete/delete.component";
+import { EditComponent } from "../dialogs/edit/edit.component";
 
 interface tableData {
   id: number;
@@ -51,7 +52,6 @@ export class GoalsListComponent implements OnInit {
 
   ngOnInit(): void {
     this.tableList.paginator = this.paginator;
-    this.toastService.success('hello')
   }
 
   openDeleteDialog(chosenElement) {
@@ -66,6 +66,16 @@ export class GoalsListComponent implements OnInit {
         );
         this.toastService.error("پاک شد");
       }
+    });
+  }
+
+  openEditDialog(chosenElement) {
+    const dialogRef = this.dialog.open(EditComponent, {
+      width: "700px",
+      data: { data: chosenElement, type: "edit" },
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log(result);
     });
   }
 }

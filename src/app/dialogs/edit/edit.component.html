@@ -1,1 +1,102 @@
-<p>edit works!</p>
+<div class="text-center">
+  <h2>
+    ویرایش هدف
+  </h2>
+  <hr />
+  <form
+    dir="rtl"
+    class="d-flex flex-column mx-5"
+    [formGroup]="goalForm"
+    (submit)="editGoal()"
+  >
+    <!-- employee -->
+    <mat-form-field class="text-right mb-2">
+      <mat-label>نام کارمند</mat-label>
+      <input
+        type="text"
+        matInput
+        formControlName="employee"
+        placeholder="نمونه: حسین موسوی"
+      />
+      <mat-error *ngIf="goalForm.get('employee').hasError('required')">
+        اضافه کردن این مورد <strong>اجباری</strong> است.
+      </mat-error>
+    </mat-form-field>
+
+    <!-- goalDesc -->
+    <mat-form-field class="text-right mb-2">
+      <mat-label>شرح هدف</mat-label>
+      <input
+        type="text"
+        matInput
+        formControlName="goalDesc"
+        placeholder="نمونه: هدف نهایی"
+      />
+      <mat-error *ngIf="goalForm.get('goalDesc').hasError('required')">
+        اضافه کردن این مورد <strong>اجباری</strong> است.
+      </mat-error>
+    </mat-form-field>
+
+    <!-- weight -->
+    <mat-form-field class="text-right mb-2">
+      <mat-label>وزن</mat-label>
+      <input
+        type="text"
+        matInput
+        formControlName="weight"
+        placeholder="نمونه: ۱"
+      />
+      <mat-error *ngIf="goalForm.get('weight').hasError('required')">
+        اضافه کردن این مورد <strong>اجباری</strong> است.
+      </mat-error>
+    </mat-form-field>
+
+    <!-- expectedAmount -->
+    <mat-form-field class="text-right mb-2">
+      <mat-label>مقدار مورد انتظار</mat-label>
+      <input
+        type="text"
+        matInput
+        formControlName="expectedAmount"
+        placeholder="نمونه: ۱۳"
+      />
+      <mat-error *ngIf="goalForm.get('expectedAmount').hasError('required')">
+        اضافه کردن این مورد <strong>اجباری</strong> است.
+      </mat-error>
+    </mat-form-field>
+
+    <!-- measureUnit -->
+    <mat-form-field class="text-right mb-2">
+      <mat-label>واحد اندازه‌گیری</mat-label>
+      <input
+        type="text"
+        matInput
+        formControlName="measureUnit"
+        placeholder="نمونه: سانتی متر"
+      />
+      <mat-error *ngIf="goalForm.get('measureUnit').hasError('required')">
+        اضافه کردن این مورد <strong>اجباری</strong> است.
+      </mat-error>
+    </mat-form-field>
+
+    <!-- date -->
+    <mat-form-field appearance="fill">
+      <mat-label>مهلت</mat-label>
+      <input matInput [matDatepicker]="dp3" disabled />
+      <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
+      <mat-datepicker #dp3 disabled="false"></mat-datepicker>
+    </mat-form-field>
+
+    <!-- confirm status -->
+    <mat-slide-toggle class="mb-4" formControlName="confirmStatus"
+      >وضعیت تایید</mat-slide-toggle
+    >
+  </form>
+
+  <div class="d-flex justify-content-around">
+    <button mat-button color="primary" (click)="editGoal()">
+      ذخیره‌ی تغییرات
+    </button>
+    <button mat-button color="warn" mat-dialog-close>لغو کردن</button>
+  </div>
+</div>

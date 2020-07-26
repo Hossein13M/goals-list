@@ -13,6 +13,10 @@ import { MatCardModule } from "@angular/material/card";
 import { MatTableModule } from "@angular/material/table";
 import { MatPaginatorModule } from "@angular/material/paginator";
 import { MatDialogModule } from "@angular/material/dialog";
+import { MatInputModule } from "@angular/material/input";
+import { MatRadioModule } from "@angular/material/radio";
+import { MatDatepickerModule } from "@angular/material/datepicker";
+import { MatSlideToggleModule } from "@angular/material/slide-toggle";
 
 import { HeaderComponent } from "./header/header.component";
 import { FooterComponent } from "./footer/footer.component";
@@ -21,7 +25,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { DeleteComponent } from "./dialogs/delete/delete.component";
 import { EditComponent } from "./dialogs/edit/edit.component";
 import { ToastrModule } from "ngx-toastr";
-
+import { MatNativeDateModule } from "@angular/material/core";
 
 @NgModule({
   declarations: [
@@ -46,12 +50,17 @@ import { ToastrModule } from "ngx-toastr";
     ReactiveFormsModule,
     MatPaginatorModule,
     MatDialogModule,
+    MatInputModule,
+    MatRadioModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSlideToggleModule,
     ToastrModule.forRoot({
       timeOut: 5000,
-      positionClass: 'toast-top-left',
+      positionClass: "toast-top-left",
     }),
   ],
   providers: [DeleteComponent, EditComponent],
-  bootstrap: [AppComponent],
+  bootstrap: [AppComponent, MatDatepickerModule],
 })
 export class AppModule {}
