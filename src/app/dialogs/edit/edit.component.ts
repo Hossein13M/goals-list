@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from "@angular/core";
 import { FormBuilder, Validators, FormGroup } from "@angular/forms";
 import { ToastrService } from "ngx-toastr";
-import { MAT_DIALOG_DATA } from "@angular/material/dialog";
+import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
 
 export interface DialogData {
   data: {
@@ -15,6 +15,7 @@ export interface DialogData {
     confirmStatus: boolean;
   };
   type: string;
+  lentgh: number;
 }
 @Component({
   selector: "app-edit",
@@ -27,10 +28,12 @@ export class EditComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private toastService: ToastrService,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData
+    @Inject(MAT_DIALOG_DATA) public data: DialogData,
+    public dialogRef: MatDialogRef<EditComponent>
   ) {}
 
   goalForm: FormGroup = this.formBuilder.group({
+    id: [, { validators: [Validators.required], updateOn: "change" }],
     employee: [, { validators: [Validators.required], updateOn: "change" }],
     goalDesc: [, { validators: [Validators.required], updateOn: "change" }],
     weight: [, { validators: [Validators.required], updateOn: "change" }],
@@ -59,6 +62,7 @@ export class EditComponent implements OnInit {
   }
 
   fillFormFields(): void {
+    this.goalForm.get("id").setValue(this.data.data.id);
     this.goalForm.get("employee").setValue(this.data.data.employee);
     this.goalForm.get("goalDesc").setValue(this.data.data.goalDesc);
     this.goalForm.get("weight").setValue(this.data.data.weight);
@@ -68,6 +72,7 @@ export class EditComponent implements OnInit {
   }
 
   editGoal() {
+    this.dialogRef.close(this.goalForm.value);
     this.toastService.success("با موفقیت ویرایش شد");
   }
 }

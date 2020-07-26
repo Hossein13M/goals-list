@@ -75,7 +75,11 @@ export class GoalsListComponent implements OnInit {
       data: { data: chosenElement, type: "edit" },
     });
     dialogRef.afterClosed().subscribe((result) => {
-      console.log(result);
+      if (result) {
+        let index = result.id;
+        this.tableList.data[index - 1] = result;
+        this.tableList._updateChangeSubscription();
+      }
     });
   }
 }
