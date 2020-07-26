@@ -73,6 +73,5 @@ export class EditComponent implements OnInit {
 
   editGoal() {
     this.dialogRef.close(this.goalForm.value);
-    this.toastService.success("با موفقیت ویرایش شد");
   }
 }

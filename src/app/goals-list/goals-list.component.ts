@@ -24,6 +24,9 @@ interface tableData {
   styleUrls: ["./goals-list.component.scss"],
 })
 export class GoalsListComponent implements OnInit {
+  selectDummyValue: string;
+  inputDummyValue: string = "Hossein";
+
   tableColumnHeaders: string[] = [
     "کارمند",
     "شرح هدف",
@@ -80,6 +83,21 @@ export class GoalsListComponent implements OnInit {
         this.tableList.data[index - 1] = result;
         this.tableList._updateChangeSubscription();
       }
+      this.toastService.success("با موفقیت ویرایش شد");
+    });
+  }
+
+  openCreateDialog() {
+    const dialogRef = this.dialog.open(EditComponent, {
+      width: "700px",
+      data: { type: "create" },
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.tableList.data.push(result);
+        this.tableList._updateChangeSubscription();
+      }
+      this.toastService.success("با موفقیت اضافه شد");
     });
   }
 }

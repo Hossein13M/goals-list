@@ -17,6 +17,7 @@ import { MatInputModule } from "@angular/material/input";
 import { MatRadioModule } from "@angular/material/radio";
 import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatSlideToggleModule } from "@angular/material/slide-toggle";
+import { MatSelectModule } from "@angular/material/select";
 
 import { HeaderComponent } from "./header/header.component";
 import { FooterComponent } from "./footer/footer.component";
@@ -55,6 +56,7 @@ import { MatNativeDateModule } from "@angular/material/core";
     MatDatepickerModule,
     MatNativeDateModule,
     MatSlideToggleModule,
+    MatSelectModule,
     ToastrModule.forRoot({
       timeOut: 5000,
       positionClass: "toast-top-left",
