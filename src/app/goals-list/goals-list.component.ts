@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from "@angular/core";
 import { ToastrService } from "ngx-toastr";
 import { MatTableDataSource } from "@angular/material/table";
 import { MatDialog } from "@angular/material/dialog";
+import * as moment from "moment";
 
 import { MatPaginator } from "@angular/material/paginator";
 import { FormGroup, Validators, FormBuilder } from "@angular/forms";
@@ -15,7 +16,7 @@ interface tableData {
   weight: number;
   expectedAmount: number;
   measureUnit: string;
-  date: string;
+  date: Date;
   confirmStatus: boolean;
 }
 @Component({
@@ -111,7 +112,7 @@ let tableData: tableData[] = [
     weight: 1,
     expectedAmount: 0,
     measureUnit: "تن",
-    date: "",
+    date: new Date(2011, 9, 16),
     confirmStatus: true,
   },
   {
@@ -121,7 +122,7 @@ let tableData: tableData[] = [
     weight: 1,
     expectedAmount: 13,
     measureUnit: "میلیون",
-    date: "",
+    date: new Date(2012, 9, 16),
     confirmStatus: true,
   },
   {
@@ -131,7 +132,7 @@ let tableData: tableData[] = [
     weight: 1,
     expectedAmount: 0,
     measureUnit: "تن",
-    date: "",
+    date: new Date(2014, 5, 16),
     confirmStatus: false,
   },
   {
@@ -141,7 +142,7 @@ let tableData: tableData[] = [
     weight: 8,
     expectedAmount: 6,
     measureUnit: "تن",
-    date: "",
+    date: new Date(2014, 5, 16),
     confirmStatus: true,
   },
   {
@@ -151,7 +152,7 @@ let tableData: tableData[] = [
     weight: 1,
     expectedAmount: 0,
     measureUnit: "کیلو",
-    date: "",
+    date: new Date(2015, 9, 16),
     confirmStatus: false,
   },
   {
@@ -161,7 +162,7 @@ let tableData: tableData[] = [
     weight: 1,
     expectedAmount: 41,
     measureUnit: "تن",
-    date: "",
+    date: new Date(2011, 9, 13),
     confirmStatus: true,
   },
   {
@@ -171,7 +172,7 @@ let tableData: tableData[] = [
     weight: 1,
     expectedAmount: 9,
     measureUnit: "دستگاه",
-    date: "",
+    date: new Date(2016, 9, 13),
     confirmStatus: true,
   },
 ];

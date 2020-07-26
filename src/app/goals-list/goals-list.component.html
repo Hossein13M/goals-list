@@ -132,7 +132,7 @@
               مهلت
             </th>
             <td class="text-center py-2" mat-cell *matCellDef="let element">
-              {{ element.date }}
+              {{ element.date | date: "shortDate" }}
             </td>
           </ng-container>
 
@@ -149,7 +149,6 @@
               <button
                 *ngIf="element.confirmStatus"
                 mat-stroked-button
-                class="w-25"
                 color="primary"
               >
                 تایید شده
@@ -159,7 +158,6 @@
               </button>
 
               <button
-                class="w-25"
                 *ngIf="!element.confirmStatus"
                 mat-stroked-button
                 color="warn"

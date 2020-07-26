@@ -68,6 +68,7 @@ export class EditComponent implements OnInit {
     this.goalForm.get("weight").setValue(this.data.data.weight);
     this.goalForm.get("expectedAmount").setValue(this.data.data.expectedAmount);
     this.goalForm.get("measureUnit").setValue(this.data.data.measureUnit);
+    this.goalForm.get("date").setValue(this.data.data.date);
     this.goalForm.get("confirmStatus").setValue(this.data.data.confirmStatus);
   }
 
