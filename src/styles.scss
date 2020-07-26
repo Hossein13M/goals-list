@@ -1,3 +1,4 @@
+@import "~ngx-toastr/toastr.css";
 html,
 body {
   height: 100%;
@@ -5,4 +6,9 @@ body {
 body {
   margin: 0;
   font-family: IranSans, Roboto, Helvetica, Arial, sans-serif, IranSans;
+}
+
+.toast-container {
+  margin-top: 60px;
+  margin-left: 35px;
 }

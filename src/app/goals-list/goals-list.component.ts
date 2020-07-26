@@ -1,4 +1,5 @@
-import { Component, OnInit, ViewChild, OnChanges } from "@angular/core";
+import { Component, OnInit, ViewChild } from "@angular/core";
+import { ToastrService } from "ngx-toastr";
 import { MatTableDataSource } from "@angular/material/table";
 import { MatDialog } from "@angular/material/dialog";
 
@@ -21,7 +22,7 @@ interface tableData {
   templateUrl: "./goals-list.component.html",
   styleUrls: ["./goals-list.component.scss"],
 })
-export class GoalsListComponent implements OnInit, OnChanges {
+export class GoalsListComponent implements OnInit {
   tableColumnHeaders: string[] = [
     "کارمند",
     "شرح هدف",
@@ -42,17 +43,19 @@ export class GoalsListComponent implements OnInit, OnChanges {
     endDate: [, { Validators: Validators.required }],
   });
 
-  constructor(private formBuilder: FormBuilder, public dialog: MatDialog) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    public dialog: MatDialog,
+    private toastService: ToastrService
+  ) {}
 
   ngOnInit(): void {
     this.tableList.paginator = this.paginator;
+    this.toastService.success('hello')
   }
-
-  ngOnChanges(): void {}
 
   openDeleteDialog(chosenElement) {
     const dialogRef = this.dialog.open(DeleteComponent, {
-      width: "300px",
       data: chosenElement,
     });
 
@@ -61,6 +64,7 @@ export class GoalsListComponent implements OnInit, OnChanges {
         this.tableList.data = this.tableList.data.filter(
           (item) => item !== chosenElement
         );
+        this.toastService.error("پاک شد");
       }
     });
   }

@@ -20,6 +20,8 @@ import { GoalsListComponent } from "./goals-list/goals-list.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { DeleteComponent } from "./dialogs/delete/delete.component";
 import { EditComponent } from "./dialogs/edit/edit.component";
+import { ToastrModule } from "ngx-toastr";
+
 
 @NgModule({
   declarations: [
@@ -44,6 +46,10 @@ import { EditComponent } from "./dialogs/edit/edit.component";
     ReactiveFormsModule,
     MatPaginatorModule,
     MatDialogModule,
+    ToastrModule.forRoot({
+      timeOut: 5000,
+      positionClass: 'toast-top-left',
+    }),
   ],
   providers: [DeleteComponent, EditComponent],
   bootstrap: [AppComponent],
