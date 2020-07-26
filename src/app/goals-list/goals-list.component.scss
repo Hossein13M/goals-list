@@ -1,1 +1,6 @@
-::ng-deep .mat-select-panel { }
+@media only screen and (max-width: 769px) {
+  .filters {
+    display: flex;
+    flex-direction: column;
+  }
+}

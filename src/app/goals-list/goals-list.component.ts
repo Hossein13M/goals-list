@@ -76,7 +76,10 @@ export class GoalsListComponent implements OnInit {
   openEditDialog(chosenElement) {
     const dialogRef = this.dialog.open(EditComponent, {
       width: "700px",
-      data: { data: chosenElement, type: "edit" },
+      data: {
+        data: chosenElement,
+        type: "edit",
+      },
     });
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
@@ -84,21 +87,20 @@ export class GoalsListComponent implements OnInit {
         this.tableList.data[index - 1] = result;
         this.tableList._updateChangeSubscription();
       }
-      this.toastService.success("با موفقیت ویرایش شد");
     });
   }
 
   openCreateDialog() {
     const dialogRef = this.dialog.open(EditComponent, {
       width: "700px",
-      data: { type: "create" },
+      data: { type: "create", length: this.tableList.data.length },
     });
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
         this.tableList.data.push(result);
         this.tableList._updateChangeSubscription();
+        this.toastService.success("با موفقیت اضافه شد");
       }
-      this.toastService.success("با موفقیت اضافه شد");
     });
   }
 }
@@ -170,7 +172,7 @@ let tableData: tableData[] = [
     employee: "کارمند ۷",
     goalDesc: "هدف ۷",
     weight: 1,
-    expectedAmount: 9,
+    expectedAmount: 0,
     measureUnit: "دستگاه",
     date: new Date(2016, 9, 13),
     confirmStatus: true,

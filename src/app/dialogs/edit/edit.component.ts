@@ -15,7 +15,7 @@ export interface DialogData {
     confirmStatus: boolean;
   };
   type: string;
-  lentgh: number;
+  length: number;
 }
 @Component({
   selector: "app-edit",
@@ -52,6 +52,9 @@ export class EditComponent implements OnInit {
   ngOnInit(): void {
     this.checkComponentType();
     this.editMode && this.fillFormFields();
+    if (!this.editMode) {
+      this.addIdToNewGoals();
+    }
   }
 
   checkComponentType() {
@@ -59,6 +62,10 @@ export class EditComponent implements OnInit {
     this.data.type.toLowerCase() == "edit"
       ? (this.editMode = true)
       : (this.editMode = false);
+  }
+
+  addIdToNewGoals() {
+    this.goalForm.get("id").setValue(this.data.length + 1);
   }
 
   fillFormFields(): void {
@@ -74,5 +81,6 @@ export class EditComponent implements OnInit {
 
   editGoal() {
     this.dialogRef.close(this.goalForm.value);
+    this.editMode && this.toastService.success("با موفقیت ویرایش شد");
   }
 }
